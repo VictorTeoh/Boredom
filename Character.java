@@ -22,7 +22,7 @@ public class Character {
     
     Character() {
 	name = "filler";
-	baseHp = Math.exp(2, 16)-1;
+	baseHp = Math.pow(2.0, 16.0)-1;
 	curHp = baseHp;
 	baseatk = 0;
 	upatk = 0;
@@ -44,8 +44,8 @@ public class Character {
 
     Character(String cname, long cpLock, double cgas, double cbaseHp,
 	      double cbaseatk, double cupatk, double cbasearmr, double catkspd,
-	      int csize, int cdmgtype, double crange, double cmovespeed,
-	      double chealrate){
+	      boolean chasSplash, int csize, int cdmgtype, double crange,
+	      double cmovespeed, double chealrate){
 	this();
 	name = cname;
 	pLock = cpLock;
@@ -55,6 +55,7 @@ public class Character {
 	upatk = cupatk;
 	basearmr = cbasearmr;
 	atkspd = catkspd;
+	hasSplash = chasSplash;
 	size = csize;
 	dmgtype = cdmgtype;
 	range = crange;
@@ -104,7 +105,7 @@ public class Character {
 	curHp = newHp;
     }
 
-    void setlevel(int newlevel){
+    void setlevel(long newlevel){
 	level = newlevel;
     }
     
@@ -130,7 +131,7 @@ public class Character {
 
     double hit(Character opponent, double atks){
 	double dmg;
-	double dmgmutiplier;
+	double dmgmutiplier = 3.64;
 	if(dmgtype == 0){
 	    dmgmutiplier = 1.0;
 	}
@@ -170,10 +171,8 @@ public class Character {
 
 
 
-    
     Character clone(){
-	new Character clone = Character(name, pLock, gas, baseHp, baseatk, upatk, basearmr, atkspd, size, dmgtype, range, movespeed, healrate);
+	Character clone = new Character(name, pLock, gas, baseHp, baseatk, upatk, basearmr, atkspd, size, dmgtype, range, movespeed, healrate);
 	return clone;
     }
-    
 }
