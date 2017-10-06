@@ -10,7 +10,7 @@ public class Character {
     double atkspd;//in secs per hit
     double basearmr;
     double uparmr;
-    long level;
+    int level;
     double healrate;
     int size;//0 small 1 medium 2 large
     int dmgtype;// 0 normal 1 concussive 2 explosive
@@ -19,6 +19,7 @@ public class Character {
     double movespeed;
     double gas;
     boolean hasSplash;
+    long plgiven;
     
     Character() {
 	name = "filler";
@@ -39,6 +40,7 @@ public class Character {
 	movespeed = 0;
 	gas = 0;
 	hasSplash = false;
+	plgiven = 0;
 
     }
 
@@ -101,14 +103,25 @@ public class Character {
 	return level;
     }
 
+    double getplgiven(){
+	return plgiven;
+    }
+
+    boolean gethasSplash(){
+	return hasSplash;
+    }
+
     void setcurHp(double newHp){
 	curHp = newHp;
     }
 
-    void setlevel(long newlevel){
+    void setlevel(int newlevel){
 	level = newlevel;
     }
-    
+
+    void setplgiven( long newplgiven){
+	plgiven = newplgiven;
+    }
 
     boolean isalive(){
 	if (curHp <= 0){
@@ -171,8 +184,9 @@ public class Character {
 
 
 
-    Character clone(){
-	Character clone = new Character(name, pLock, gas, baseHp, baseatk, upatk, basearmr, atkspd, size, dmgtype, range, movespeed, healrate);
-	return clone;
+    Character myclone(){
+	Character clone0 = new Character(name, pLock, gas, baseHp, baseatk, upatk, basearmr, atkspd, hasSplash, size, dmgtype, range, movespeed, healrate);
+	clone0.heal();
+	return clone0;
     }
 }
