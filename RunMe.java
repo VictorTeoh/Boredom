@@ -39,8 +39,18 @@ public class RunMe{
     // wip
     public static String[] strarrcondenser(String[] arr){
 	int i;
-	for(i = 0; i < starrcondenser.length; i++){
-
+	int stri0;
+	int stri1;
+	String h0;
+	String h1;
+	for(i = 1; i < arr.length; i++){
+	    if(i != 1){
+	    h0 = h1;
+	    h1 = arr[i];
+	    stri0 = stri1;
+	    stri1 = arr[i].indexOf("\t");
+	    }
+	    
 	}
 	return arr;
     }
