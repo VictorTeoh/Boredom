@@ -1,6 +1,6 @@
 
 public class Character {
-    
+    //firebat does 3 hits with 1.5 dmg mutiplier
     String name;
     double baseHp;
     double curHp;
@@ -30,7 +30,7 @@ public class Character {
 	numatks = 1;
 	atkspd = 1;
 	basearmr = 0;
-	uparmr = 0;
+	uparmr = 1;
 	level = 0;
 	healrate = 0;
 	size = 0;
@@ -79,6 +79,10 @@ public class Character {
 	return curHp;
     }
 
+    double getnumatks(){
+	return numatks;
+    }
+
     double getatkspd(){
 	return atkspd;
     }
@@ -87,6 +91,10 @@ public class Character {
 	return basearmr;
     }
 
+    double getuparmr(){
+	return uparmr;
+    }
+    
     double getsize(){
 	return size;
     }
@@ -95,12 +103,20 @@ public class Character {
 	return range;
     }
 
+    double getmovespeed(){
+	return movespeed;
+    }
+    
     double getgas(){
 	return gas;
     }
 
-    double getlevel(){
+    int getlevel(){
 	return level;
+    }
+
+    double getpLock(){
+	return pLock;
     }
 
     double getplgiven(){
@@ -135,7 +151,7 @@ public class Character {
       if (PL< pLock){
       System.out.println(name); 
       System.out.println("Warning Pl lower than lock"); 
-}
+} what functionality does this really have if its workign
     */
 
     void heal(){
@@ -145,6 +161,9 @@ public class Character {
     double hit(Character opponent, double atks){
 	double dmg;
 	double dmgmutiplier = 3.64;
+	if(level < 0){
+	    level = -3;
+	}
 	if(dmgtype == 0){
 	    dmgmutiplier = 1.0;
 	}
@@ -170,9 +189,10 @@ public class Character {
 		dmgmutiplier = 0.5;
 	    }
 	}
-	dmg = Math.floor((baseatk + upatk*level - opponent.getbasearmr()) * 2.0
-			 * dmgmutiplier) / 2.0;
-	opponent.setcurHp(opponent.getcurHp()-dmg);
+	dmg = Math.floor((baseatk + upatk *(3 + level) * 2  - opponent.getbasearmr() - opponent.getlevel() * opponent.getuparmr()) * 2.0 * dmgmutiplier * numatks) / 2.0;// 2/1 atk and def ups per level!
+	if(dmg < 0.5){
+	    dmg = 0.5;
+	}
 	return dmg;
     }
 
@@ -188,5 +208,9 @@ public class Character {
 	Character clone0 = new Character(name, pLock, gas, baseHp, baseatk, upatk, basearmr, atkspd, hasSplash, size, dmgtype, range, movespeed, healrate);
 	clone0.heal();
 	return clone0;
+    }
+
+    public String toString(){
+	return name;
     }
 }
