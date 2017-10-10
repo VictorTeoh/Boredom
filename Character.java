@@ -18,6 +18,9 @@ public class Character {
     double range;
     double movespeed;
     double gas;
+    boolean canhitground;
+    boolean canhitair;
+    int unitype; // 0 ground 1 air
     boolean hasSplash;
     long plgiven;
     
@@ -44,10 +47,8 @@ public class Character {
 
     }
 
-    Character(String cname, long cpLock, double cgas, double cbaseHp,
-	      double cbaseatk, double cupatk, double cbasearmr, double catkspd,
-	      boolean chasSplash, int csize, int cdmgtype, double crange,
-	      double cmovespeed, double chealrate){
+    Character(String cname, long cpLock, double cgas, double cbaseHp, double cbaseatk, double cupatk, double cbasearmr, double catkspd, double cnumatks, boolean ccanhitground, boolean ccanhitair, boolean chasSplash, int cunitype,
+	      int csize, int cdmgtype, double crange, double cmovespeed, double chealrate){
 	this();
 	name = cname;
 	pLock = cpLock;
@@ -57,7 +58,11 @@ public class Character {
 	upatk = cupatk;
 	basearmr = cbasearmr;
 	atkspd = catkspd;
+	numatks = cnumatks;
+	canhitground = ccanhitground;
+	canhitair = ccanhitair;
 	hasSplash = chasSplash;
+	unitype = cunitype;
 	size = csize;
 	dmgtype = cdmgtype;
 	range = crange;
@@ -127,6 +132,18 @@ public class Character {
 	return hasSplash;
     }
 
+    boolean getcanhitground(){
+	return canhitground;
+    }
+
+    boolean getcanhitair(){
+	return canhitair;
+    }
+
+    int getunitype(){
+	return unitype;
+    }
+
     void setcurHp(double newHp){
 	curHp = newHp;
     }
@@ -146,13 +163,6 @@ public class Character {
 	return true;
     }
 
-    /*
-      void setPL(long PL){
-      if (PL< pLock){
-      System.out.println(name); 
-      System.out.println("Warning Pl lower than lock"); 
-} what functionality does this really have if its workign
-    */
 
     void heal(){
 	setcurHp(getbaseHp());	
@@ -189,23 +199,28 @@ public class Character {
 		dmgmutiplier = 0.5;
 	    }
 	}
+	if(opponent.getlevel() < 0){
+	    dmg = Math.floor((baseatk + upatk *(3 + level) * 2  - opponent.getbasearmr()) * 2.0 * dmgmutiplier * numatks) / 2.0;// 2/1 atk and def ups per level!
+	    if(dmg < 0.5){
+		dmg = 0.5;
+	    }
+	    opponent.setcurHp(opponent.getcurHp()-dmg);
+	    return dmg;
+	}
 	dmg = Math.floor((baseatk + upatk *(3 + level) * 2  - opponent.getbasearmr() - opponent.getlevel() * opponent.getuparmr()) * 2.0 * dmgmutiplier * numatks) / 2.0;// 2/1 atk and def ups per level!
 	if(dmg < 0.5){
 	    dmg = 0.5;
 	}
+	opponent.setcurHp(opponent.getcurHp()-dmg);
 	return dmg;
     }
 
-    void radialhit (Character opponent, double indexofhit){
-	if(Math.random() > indexofhit){
-	    hit(opponent, 1);
-	}
-    }
 
 
 
     Character myclone(){
-	Character clone0 = new Character(name, pLock, gas, baseHp, baseatk, upatk, basearmr, atkspd, hasSplash, size, dmgtype, range, movespeed, healrate);
+	Character clone0 = new Character(name, pLock, gas, baseHp, baseatk, upatk, basearmr, atkspd, numatks, canhitground, canhitair, hasSplash, unitype,
+					 size, dmgtype, range, movespeed, healrate);
 	clone0.heal();
 	return clone0;
     }
