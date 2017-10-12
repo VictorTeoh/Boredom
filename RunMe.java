@@ -2,7 +2,7 @@ import java.lang.Math;
 public class RunMe{
 
     //splash is still wrong
-    static double indexofsplash = 0.33; //the chance of splash from your unit to attack a brand new unit
+    static double indexofsplash = 0.0; //the chance of splash from your unit to attack a brand new unit
     static double levelforgas = 6;//not in use as of right now
     static boolean nopLock = false; //setpLock to 42 when creating characters to never have that character's form appear
     static double distHeal = 4.75; //don't set it to a nice value to make sure downtime doesnt break
@@ -195,8 +195,8 @@ public class RunMe{
 	
 	Character v1 = new Character("V", 0L, 0.0, 550.0, 20.0, 3.0, 0.0, 0.924, 1.0, true, false, false, 0, 0, 1, 0.0, 2.976, 0.0);
 	Character v2 = new Character("SV", 50000L, 6.0, 2100.0, 200.0, 12.0, 4.0, 0.84, 1.0, true, true, true, 0, 2, 0, 0.0, 3.720, 0.0);
-	Character v3 = new Character("VS1", 100000L, 8.0, 5500.0, 100.0, 30.0, 25.0, 1.26, 1.0, true, true, false, 0, 0, 1, 4.0, 3.906, 0.0);
-	Character v4 = new Character("VS2", 400000L, 10.0, 11000.0, 200.0, 116.0, 50.0, 0.924, 1.0, true, true, false, 0, 0, 0, 6.0, 3.906, 0.0);
+	Character v3 = new Character("VS1", 100000L, 8.0, 5500.0, 100.0, 30.0, 25.0, 1.26, 1.0, true, true, false, 0, 2, 2, 4.0, 3.906, 0.0);
+	Character v4 = new Character("VS2", 400000L, 10.0, 11000.0, 200.0, 116.0, 50.0, 0.924, 1.0, true, true, false, 0, 2, 2, 6.0, 3.906, 0.0);
 	Character v5 = g7.myclone();
 	Character v6 = g8.myclone();
 	Character[] v = { v1, v2, v3, v4, v5, v6};
@@ -216,7 +216,7 @@ public class RunMe{
 	Character t6 =  new Character("GS3A", 950000L, 14.0, 37500.0, 500.0, 101.0, 100.0, 0.924, 2.0, false, true, false, 1, 2, 2, 4.0, 4.963, 0.0);
 	Character[] t = { t1, t2, t3, t4, t5, t6};
 
-	Character gh1 = new Character("GH", 0L, 0.0, 425.0, 20.0, 0.0, 0.0, 0.252, 1.0, true, false, false, 0, 0, 0, 0.0, 6.286, 1.0); // use crack ling stats
+	Character gh1 = new Character("GH", 0L, 0.0, 425.0, 20.0, 1.0, 0.0, 0.252, 1.0, true, false, false, 0, 0, 0, 0.0, 6.286, 1.0); // use crack ling stats
 	Character gh2 = new Character("EGH", 0L, 11.0, 1700.0, 80.0, 9.0, 4.0, 0.924, 1.0, true, false, false, 0, 0, 0, 0.0, 2.976, 1.0);
 	Character gh3 = new Character("GHS1", 100000L, 8.0, 4250.0, 50.0, 7.0, 25.0, 0.252, 1.0, true, false, false, 0, 0, 0, 0.0, 6.286, 1.0);
 	Character gh4 = new Character("GHS2", 400000L, 10.0, 9500.0, 200.0, 80.0, 50.0, 0.63, 1.0, true, true, false, 0, 1, 2, 5.0, 4.144, 1.0);
@@ -311,7 +311,7 @@ public class RunMe{
 	printarr(bestroute(go, gos));
 	*/
 	//DBZ Evil Sagas RX 6 label 2
-	Character r1 = new Character("R", 0L, 0.0, 500.0, 8.0, 2.0, 0.0, 0.462, 1.5, true, false, true, 0, 0, 1, 2.0, 4.464, -10.0/9);
+ 	Character r1 = new Character("R", 0L, 0.0, 500.0, 8.0, 2.0, 0.0, 0.462, 1.5, true, false, true, 0, 0, 1, 2.0, 4.464, -10.0/9);
 	Character r2 = new Character("RS1", 50000L, 7.0, 5000.0, 100.0, 30.0, 25.0, 0.924, 1.0, true, true, false, 0, 0, 1, 7.0, 2.976, 0.0);
 	Character r3 = new Character("RS2", 250000L, 9.0, 12500.0, 250.0, 70.0, 50.0, 0.924, 1.0, true, true, false, 0, 0, 1, 7.0, 2.976, 0.0);
 	Character r4 = new Character("RS3", 700000L, 12.0, 25000.0, 285.0, 120.0, 100.0, 0.315, 1.0, true, true, false, 0, 0, 0, 5.0, 4.464, -10.0/9);
@@ -319,6 +319,38 @@ public class RunMe{
 	Character r6 = new Character("BRIZS", 1000000L, 14.0, 56000.0, 500.0, 398.0, 255.0, 0.62, 1.0, true, true, false, 0, 1, 2, 5.0, 4.144, 1.0);
 	Character[] r = {r1, r2, r3, r4, r5, r6};
 
+	Character br1 = new Character("BR", 0L, 0.0, 540.0, 8.0, 2.0, 0.0, 0.462, 1.5, true, false, true, 0, 0, 1, 2.0, 4.464, -10.0/9);
+	Character br2 = new Character("BRS1", 50000L, 7.0, 5400.0, 110.0, 40.0, 25.0, 0.924, 1.0, true, true, false, 0, 0, 1, 7.0, 2.976, 0.0);
+	Character br3 = new Character("BRLS", 300000L, 0.0, 19000.0, 250.0, 70.0, 100.0, 0.315, 1.0, true, true, false, 0, 0, 0, 5.0, 4.464, -10.0/9);
+	Character br4 = r5.myclone();
+	Character br5 = r6.myclone();
+	Character[] br = {br1, br2, br3, br4, br5};
+
+	Character f1 = new Character("F", 0L, 0.0, 550.0, 10.0, 2.0, 0.0, 0.252, 1.0, true, false, false, 0, 0, 0, 0.0, 6.286, 1.0); // use crack ling stats
+	Character f2 = new Character("FF2", 25000L, 11.0, 3000.0, 100.0, 25.0, 4.0, 0.63, 1.0, true, false, false, 0, 2, 0, 0.0, 4.1, 1.0);
+	Character f3 = new Character("FF3", 150000L, 12.0, 12000.0, 250.0, 40.0, 100.0, 0.63, 1.0, true, false, false, 0, 2, 0, 0.0, 4.1, 1.0);
+	Character f4 = new Character("FF4", 420000L, 13.0, 27000.0, 277.0, 113.0, 50.0, 1.26, 1.0, true, true, false, 1, 0, 0, 3.0, 4.963, 1.0);
+	Character f5 = new Character("FREL", 1000000L, 14.0, 40000.0, 670.0, 348.0, 150.0, 1.26, 1.0, true, true, false, 1, 0, 0, 3.0, 4.963, 1.0);
+	Character f6 = new Character("MF", 1500000L, 0.0, 30000.0, 290.0, 330.0, 125.0, 0.924, 1.0, true, true, false, 0, 0, 1, 7.0, 2.976, 0.0);
+	Character[] f = { f1, f2, f3, f4, f5, f6};
+
+	Character b1 = new Character("B", 0L, 0.0, 600.0, 12.0, 3.0, 2.0, 0.924, 2.0, true, false, false, 0, 0, 0, 0.0, 2.976, 0.0);
+	Character b2 = new Character("SB", 130000L, 0.0, 6000.0, 100.0, 39.0, 25.0, 0.84, 1.0, true, true, true, 0, 2, 0, 0.0, 3.720, 0.0);
+        Character b3 = new Character("SBT", 250000L, 0.0, 11000.0, 250.0, 60.0, 50.0, 0.84, 1.0, true, true, true, 0, 2, 0, 0.0, 3.720, 0.0);
+	Character b4 = new Character("SBGG", 900000L, 0.0, 33000.0, 350.0, 130.0, 200.0, 0.924, 1.0, true, false, false, 0, 2, 0, 6.0, 3.497, 0.0);
+	Character b5 = new Character("SBGA", 900000L, 0.0, 33000.0, 175.0, 65.0, 200.0, 0.924, 2.0, false, true, false, 0, 2, 2, 8.0, 3.497, 0.0);
+	Character b6 = new Character("SBMG", 1000000L, 0.0, 65000.0, 1034.0, 430.0, 200.0, 0.924, 1.0, true, false, false, 0, 2, 0, 6.0, 3.497, 0.0);
+	Character b7 = new Character("SBMA", 1000000L, 0.0, 65000.0, 517.0, 215.0, 200.0, 0.924, 2.0, false, true, false, 0, 2, 2, 8.0, 3.497, 0.0);
+	Character[] b = {b1, b2, b3, b4, b6};
+
+	Character c1 = new Character("C", 0L, 0.0, 475.0, 10.0, 2.0, 1.0, 0.924, 2.0, true, false, false, 0, 0, 0, 0.0, 4.464, 0.0);
+	Character c2 = new Character("CSMP", 55000L, 0.0, 5938.0, 100.0, 37.0, 25.0, 1.26, 1.0, true, true, false, 0, 2, 2, 4.0, 3.906, 0.0);
+	Character c3 = new Character("CP", 130000L, 0.0, 12300.0, 200.0, 58.0, 100.0, 0.924, 1.0, true, true, false, 0, 2, 2, 6.0, 3.906, 0.0);
+	Character c4 = new Character("CSPG", 650000L, 12.0, 33000.0, 1000.0, 320.0, 120.0, 1.26, 1.0, true, false, false, 1, 2, 0, 4.0, 4.963, 0.0);
+	Character c5 = new Character("CSPA", 650000L, 12.0, 33000.0, 500.0, 160.0, 60.0, 0.924, 2.0, false, true, false, 1, 2, 2, 4.0, 4.963, 0.0);
+	Character c6 = f5.myclone();
+	Character[] c = {c1, c2, c3, c4, c5, c6};
+	
 	Character r1s = r1.myclone();
 	r1s.setplgiven(100);
 	Character r2s = r2.myclone();
@@ -331,11 +363,60 @@ public class RunMe{
 	r5s.setplgiven(3500);
 	Character[] rs = {r1s, r2s, r3s, r4s, r5s};
 
+	Character br1s = br1.myclone();
+	br1s.setplgiven(100);
+	Character br2s = br2.myclone();
+	br2s.setplgiven(400);
+	Character br3s = br3.myclone();
+	br3s.setplgiven(1000);
+	Character br4s = r5.myclone();
+	br4s.setplgiven(2000);
+	Character br5s = r6.myclone();
+	br5s.setplgiven(3500);
+	Character[] brs = {br1s, br2s, br3s, br4s, br5s};
+
+	Character f1s = f1.myclone();
+	f1s.setplgiven(100);
+	Character f2s = f2.myclone();
+	f2s.setplgiven(400);
+	Character f3s = f3.myclone();
+	f3s.setplgiven(1000);
+	Character f4s = f4.myclone();
+	f4s.setplgiven(2000);
+	Character f5s = f5.myclone();
+	f5s.setplgiven(3500);
+	Character[] fs = {f1s, f2s, f3s, f4s, f5s};
+
+	Character b1s = b1.myclone();
+	b1s.setplgiven(100);
+	Character b2s = b2.myclone();
+	b2s.setplgiven(400);
+	Character b3s = b3.myclone();
+	b3s.setplgiven(1000);
+	Character b4s = b4.myclone();
+	b4s.setplgiven(2000);
+	Character b5s = b6.myclone();
+	b5s.setplgiven(3500);
+	Character[] bs = {b1s, b2s, b3s, b4s, b5s};
+
+	Character c1s = c1.myclone();
+	c1s.setplgiven(100);
+	Character c2s = c2.myclone();
+	c2s.setplgiven(400);
+	Character c3s = c3.myclone();
+	c3s.setplgiven(1000);
+	Character c4s = c5.myclone();
+	c4s.setplgiven(2000);
+	Character c5s = c6.myclone();
+	c5s.setplgiven(3500);
+	Character[] cs = {c1s, c2s, c3s, c4s, c5s};
+	
 	printarr(bestroute(r, rs));
-	/*	printarr(bestroute(v, vs));
-	printarr(bestroute(p, ps));
-	printarr(bestroute(t, ts));
-	printarr(bestroute(gh, ghs));
+	printarr(bestroute(br, brs));
+	printarr(bestroute(f, fs));
+	printarr(bestroute(b, bs));
+	printarr(bestroute(c, cs));
+	/*
 	printarr(bestroute(go, gos)); */
     }
 
